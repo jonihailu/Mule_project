@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:email="http://www.mulesoft.org/schema/mule/email"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="0ecc8bd1-824e-4c2d-bb8f-1678b338c5f6" >
+		<file:connection workingDir="C:\Users\hailu\Desktop\Walmart" />
+	</file:config>
+	<flow name="file_moduleFlow" doc:id="a59e84e0-0a31-46ac-a3d9-d7805d5c1946" >
+		<file:listener doc:name="On New or Updated File" doc:id="ac22b69a-e54d-40da-9a85-05bf09540961" config-ref="File_Config" directory="Inbound" moveToDirectory="C:\Users\hailu\Desktop\Walmart\outbound" renameTo="#[attributes.fileName ++ '.backup']" watermarkMode="MODIFIED_TIMESTAMP">
+			<scheduling-strategy >
+				<fixed-frequency frequency="15" timeUnit="SECONDS"/>
+			</scheduling-strategy>
+		</file:listener>
+		<foreach doc:name="For Each" doc:id="2904853f-716c-4ff7-8a32-66d16049fca6" >
+			<logger level="INFO" doc:name="Logger" doc:id="b8c5e767-5c31-43f6-8244-27be7271b6bc" message="This project is running every 15 secs" />
+		</foreach>
+		<file:write doc:name="Write" doc:id="c65f3c2c-4eb5-4366-86ec-1bce23a4c131" config-ref="File_Config" mode="APPEND" path="/write"/>
+	</flow>
+</mule>
