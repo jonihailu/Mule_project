@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="sampleData" format="xml">
+      <types:example format="xml" element="Result" location="examples/sample-1.xml"/>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#e8224fff-64d8-499e-b239-4d17d9616f87">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="sampleData"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#90ddabfa-3bf5-415b-b653-3f13d76026c2">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="sampleData"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#65f39198-6d89-40fc-aa9a-cce4b2298d71">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="sampleData"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#fc41735f-9d2d-424a-a6cf-6a7462638c4e">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="sampleData"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#316b85a2-75e3-4117-afdf-c8440de8e14c">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="sampleData"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
